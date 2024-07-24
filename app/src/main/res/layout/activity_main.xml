@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20sp"
+    android:background="#D8744A"
+    android:backgroundTint="#D8744A"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:clickable="true"
+            app:backgroundTint="#FF0000"
+            app:srcCompat="@android:drawable/ic_notification_overlay" />
+
+        <Spinner
+            android:id="@+id/devices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+        <ImageButton
+            android:id="@+id/btnBluetooth"
+            android:layout_width="70sp"
+            android:layout_height="50sp"
+            android:layout_weight="1"
+            android:backgroundTint="#346699"
+            app:srcCompat="@drawable/baseline_bluetooth_24" />
+
+        <ImageButton
+            android:id="@+id/btnConectar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageButton
+            android:id="@+id/btnDesconectar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            app:srcCompat="@android:drawable/ic_delete" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnUp"
+                android:layout_width="300sp"
+                android:layout_height="150sp"
+                android:backgroundTint="#346699"
+                app:srcCompat="@drawable/icon_up_24" />
+
+            <ImageButton
+                android:id="@+id/btnDown"
+                android:layout_width="300sp"
+                android:layout_height="150sp"
+                android:backgroundTint="#346699"
+                app:srcCompat="@drawable/_down_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnStop"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:backgroundTint="#a1d5d3 "
+                app:srcCompat="@drawable/icon_stop_circle_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnLeft"
+                android:layout_width="150sp"
+                android:layout_height="300sp"
+                android:layout_weight="1"
+                android:backgroundTint="#346699"
+                app:srcCompat="@drawable/icon_left_24" />
+
+            <ImageButton
+                android:id="@+id/btnRigth"
+                android:layout_width="150sp"
+                android:layout_height="300sp"
+                android:layout_weight="1"
+                android:backgroundTint="#346699"
+                app:srcCompat="@drawable/icon_right_24" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
