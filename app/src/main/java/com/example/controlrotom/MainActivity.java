@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> mNameDevices = new ArrayList<>();
     private ArrayAdapter<String> deviceAdapter;
 
-    ImageButton btnBluetooth, btnUp, btnDown, btnStop, btnLeft, btnRigth, btnDesconectar, btnConectar;
+    ImageButton btnBluetooth, btnUp, btnDown, btnLeft, btnRigth, btnDesconectar, btnConectar, btnInfo, btnLightOn, btnLightOff;
     FloatingActionButton indicator;
     Spinner devices;
     //02-----------------------------------------------------------------------------------------------------------------------------------
@@ -84,17 +85,29 @@ public class MainActivity extends AppCompatActivity {
         btnBluetooth = findViewById(R.id.btnBluetooth);
         btnUp = findViewById(R.id.btnUp);
         btnDown = findViewById(R.id.btnDown);
-        btnStop = findViewById(R.id.btnStop);
         btnLeft = findViewById(R.id.btnLeft);
         btnRigth = findViewById(R.id.btnRigth);
         indicator = findViewById(R.id.indicator);
         devices = findViewById(R.id.devices);
         btnConectar = findViewById(R.id.btnConectar);
         btnDesconectar = findViewById(R.id.btnDesconectar);
+        btnInfo = findViewById(R.id.btnInfo);
+        btnLightOn = findViewById(R.id.btnLightOn);
+        btnLightOff = findViewById(R.id.btnLightOff);
 
         deviceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mNameDevices);
         deviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         devices.setAdapter(deviceAdapter);
+
+        String mesage = "\nNOMBRE: Control SimiRobots \n\nVERSIÓN: 1.3.0 \n\nFECHA DE VERSIÓN: 29 de Julio 2024 \n\nCREADOR: Oscar Julián Castillo Mateus";
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setTitle("Informacion de la Aplicación").setMessage(mesage).setPositiveButton("Aceptar", null).setCancelable(false).show();
+            }
+        });
 
         btnBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +137,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-/*
+
+        btnLightOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MyConexionBT != null) {
+                    MyConexionBT.write('X');
+                    Toast.makeText(getBaseContext(), "Luces encendidas...", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("MainActivity", "mConnectedThread is null");
+                }
+            }
+        });
+
+        btnLightOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MyConexionBT != null) {
+                    MyConexionBT.write('Y');
+                    Toast.makeText(getBaseContext(), "Luces apagadas...", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("MainActivity", "mConnectedThread is null");
+                }
+            }
+        });
+
         btnUp.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -162,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_DOWN:
                         // El botón se presiona
                         if (MyConexionBT != null) {
-                            MyConexionBT.write('D');
+                            MyConexionBT.write('B');
                         } else {
                             Log.e("MainActivity", "mConnectedThread is null");
                         }
@@ -239,62 +276,8 @@ public class MainActivity extends AppCompatActivity {
 
                 return false;
             }
-        });*/
-
-        btnUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('F');
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
-                }
-            }
         });
 
-        btnDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('B');
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
-                }
-            }
-        });
-
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('S');
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
-                }
-            }
-        });
-
-        btnLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('L');
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
-                }
-            }
-        });
-
-        btnRigth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('R');
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
-                }
-            }
-        });
         //03-----------------------------------------------------------------------------------------------------------------------------------
     }
     //04-----------------------------------------------------------------------------------------------------------------------------------

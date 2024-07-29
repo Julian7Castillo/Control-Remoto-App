@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20sp"
-    android:background="#D8744A"
-    android:backgroundTint="#D8744A"
+    android:background=" #fb8404"
+    android:backgroundTint=" #fb8404"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -17,6 +17,16 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnInfo"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_weight="1"
+            android:backgroundTint=" #fb8404"
+            app:srcCompat="@drawable/icon_fmd_bad_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/indicator"
@@ -38,7 +48,7 @@
             android:layout_width="70sp"
             android:layout_height="50sp"
             android:layout_weight="1"
-            android:backgroundTint="#346699"
+            android:backgroundTint=" #3da3bb "
             app:srcCompat="@drawable/baseline_bluetooth_24" />
 
         <ImageButton
@@ -46,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#000000"
+            android:backgroundTint="#000"
             app:srcCompat="@android:drawable/ic_input_add" />
 
         <ImageButton
@@ -75,14 +85,14 @@
                 android:id="@+id/btnUp"
                 android:layout_width="300sp"
                 android:layout_height="150sp"
-                android:backgroundTint="#346699"
+                android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/icon_up_24" />
 
             <ImageButton
                 android:id="@+id/btnDown"
                 android:layout_width="300sp"
                 android:layout_height="150sp"
-                android:backgroundTint="#346699"
+                android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/_down_24" />
 
         </LinearLayout>
@@ -93,11 +103,33 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/btnStop"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
-                android:backgroundTint="#a1d5d3 "
-                app:srcCompat="@drawable/icon_stop_circle_24" />
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FB8404"
+                app:srcCompat="@drawable/cararotom" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnLightOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint=" #fb8404"
+                    app:srcCompat="@drawable/icon_flashlight_on_24" />
+
+                <ImageButton
+                    android:id="@+id/btnLightOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint=" #fb8404"
+                    app:srcCompat="@drawable/icon_flashlight_off_24" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -112,7 +144,7 @@
                 android:layout_width="150sp"
                 android:layout_height="300sp"
                 android:layout_weight="1"
-                android:backgroundTint="#346699"
+                android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/icon_left_24" />
 
             <ImageButton
@@ -120,7 +152,7 @@
                 android:layout_width="150sp"
                 android:layout_height="300sp"
                 android:layout_weight="1"
-                android:backgroundTint="#346699"
+                android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/icon_right_24" />
         </LinearLayout>
     </LinearLayout>
