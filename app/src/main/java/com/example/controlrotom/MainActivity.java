@@ -26,8 +26,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.TextView;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -38,7 +37,6 @@ import java.util.UUID;
 //01-----------------------------------------------------------------------------------------------------------------------------------
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -61,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> mNameDevices = new ArrayList<>();
     private ArrayAdapter<String> deviceAdapter;
 
-    ImageButton btnBluetooth, btnUp, btnDown, btnLeft, btnRigth, btnDesconectar, btnConectar, btnInfo, btnLightOn, btnLightOff;
+    ImageButton btnBluetooth, btnUp, btnDown, btnLeft, btnRigth, btnDesconectar, btnConectar, btnInfo, btnLight,btnSound;
     FloatingActionButton indicator;
     Spinner devices;
+
+    boolean ligth = false, sound = false;
     //02-----------------------------------------------------------------------------------------------------------------------------------
 
     //03-----------------------------------------------------------------------------------------------------------------------------------
@@ -92,8 +92,9 @@ public class MainActivity extends AppCompatActivity {
         btnConectar = findViewById(R.id.btnConectar);
         btnDesconectar = findViewById(R.id.btnDesconectar);
         btnInfo = findViewById(R.id.btnInfo);
-        btnLightOn = findViewById(R.id.btnLightOn);
-        btnLightOff = findViewById(R.id.btnLightOff);
+        btnLight = findViewById(R.id.btnLight);
+        btnSound = findViewById(R.id.btnSound);
+
 
         deviceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mNameDevices);
         deviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -138,26 +139,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLightOn.setOnClickListener(new View.OnClickListener() {
+        btnLight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('X');
-                    Toast.makeText(getBaseContext(), "Luces encendidas...", Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
+                if(!ligth) {
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('X');
+                        Toast.makeText(getBaseContext(), "Luces encendidas...", Toast.LENGTH_SHORT).show();
+                        ligth = true;
+                        btnLight.setImageResource(R.drawable.icon_flashlight_off_24);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }else{
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('Y');
+                        Toast.makeText(getBaseContext(), "Luces apagadas...", Toast.LENGTH_SHORT).show();
+                        ligth = false;
+                        btnLight.setImageResource(R.drawable.icon_flashlight_on_24);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
                 }
             }
         });
-
-        btnLightOff.setOnClickListener(new View.OnClickListener() {
+        btnSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MyConexionBT != null) {
-                    MyConexionBT.write('Y');
-                    Toast.makeText(getBaseContext(), "Luces apagadas...", Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.e("MainActivity", "mConnectedThread is null");
+                if (!sound) {
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('W');
+                        Toast.makeText(getBaseContext(), "sonido encendido...", Toast.LENGTH_SHORT).show();
+                        sound = true;
+                        btnSound.setImageResource(R.drawable.icon_music_off_24);
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }else{
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('Z');
+                        Toast.makeText(getBaseContext(), "sonido apagado...", Toast.LENGTH_SHORT).show();
+                        sound = false;
+                        btnSound.setImageResource(R.drawable.icon_music_note_24);
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
                 }
             }
         });
