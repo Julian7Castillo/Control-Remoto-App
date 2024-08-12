@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         deviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         devices.setAdapter(deviceAdapter);
 
-        String mesage = "\nNOMBRE: Control SimiRobots \n\nVERSIÓN: 1.3.0 \n\nFECHA DE VERSIÓN: 29 de Julio 2024 \n\nCREADOR: Oscar Julián Castillo Mateus";
+        String mesage = "\nNOMBRE: Control SimiRobots \n\nVERSIÓN: 1.3.1 \n\nFECHA DE VERSIÓN: 31 de Julio 2024 \n\nCREADOR: Oscar Julián Castillo Mateus";
 
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "sonido encendido...", Toast.LENGTH_SHORT).show();
                         sound = true;
                         btnSound.setImageResource(R.drawable.icon_music_off_24);
+
                     } else {
                         Log.e("MainActivity", "mConnectedThread is null");
                     }
@@ -183,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "sonido apagado...", Toast.LENGTH_SHORT).show();
                         sound = false;
                         btnSound.setImageResource(R.drawable.icon_music_note_24);
+
                     } else {
                         Log.e("MainActivity", "mConnectedThread is null");
                     }
