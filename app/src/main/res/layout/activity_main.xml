@@ -67,15 +67,6 @@
             android:backgroundTint="#000000"
             app:srcCompat="@android:drawable/ic_delete" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,15 +84,15 @@
 
             <ImageButton
                 android:id="@+id/btnUp"
-                android:layout_width="300sp"
-                android:layout_height="150sp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/icon_up_24" />
 
             <ImageButton
                 android:id="@+id/btnDown"
-                android:layout_width="300sp"
-                android:layout_height="150sp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/_down_24" />
 
@@ -125,6 +116,14 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:id="@+id/btnRampa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint=" #fb8404"
+                    app:srcCompat="@drawable/rampa_abajo_24" />
+
+                <ImageButton
                     android:id="@+id/btnLight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,6 +138,22 @@
                     android:layout_weight="1"
                     android:backgroundTint=" #fb8404"
                     app:srcCompat="@drawable/icon_music_note_24" />
+
+                <ImageButton
+                    android:id="@+id/btnDoor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint=" #fb8404"
+                    app:srcCompat="@drawable/door_close_70" />
+
+                <ImageButton
+                    android:id="@+id/btnVentilador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint=" #fb8404"
+                    app:srcCompat="@drawable/ventilador_apagodo" />
             </LinearLayout>
         </LinearLayout>
 
@@ -151,20 +166,19 @@
 
             <ImageButton
                 android:id="@+id/btnLeft"
-                android:layout_width="150sp"
-                android:layout_height="300sp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:layout_weight="1"
                 android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/icon_left_24" />
 
             <ImageButton
                 android:id="@+id/btnRigth"
-                android:layout_width="150sp"
-                android:layout_height="300sp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:layout_weight="1"
                 android:backgroundTint=" #3da3bb "
                 app:srcCompat="@drawable/icon_right_24" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

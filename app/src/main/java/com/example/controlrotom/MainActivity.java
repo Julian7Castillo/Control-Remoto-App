@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> mNameDevices = new ArrayList<>();
     private ArrayAdapter<String> deviceAdapter;
 
-    ImageButton btnBluetooth, btnUp, btnDown, btnLeft, btnRigth, btnDesconectar, btnConectar, btnInfo, btnLight,btnSound;
+    ImageButton btnBluetooth,btnUp,btnDown,btnLeft,btnRigth,btnDesconectar,btnConectar,btnInfo,btnLight,btnSound,btnRampa,btnDoor,btnVentilador;
     FloatingActionButton indicator;
     Spinner devices;
 
-    boolean ligth = false, sound = false;
+    boolean ligth = false, sound = false, rampa = false, compuerta=false;
     //02-----------------------------------------------------------------------------------------------------------------------------------
 
     //03-----------------------------------------------------------------------------------------------------------------------------------
@@ -94,13 +94,15 @@ public class MainActivity extends AppCompatActivity {
         btnInfo = findViewById(R.id.btnInfo);
         btnLight = findViewById(R.id.btnLight);
         btnSound = findViewById(R.id.btnSound);
-
+        btnRampa= findViewById(R.id.btnRampa);
+        btnDoor= findViewById(R.id.btnDoor);
+        btnVentilador = findViewById(R.id.btnVentilador);
 
         deviceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mNameDevices);
         deviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         devices.setAdapter(deviceAdapter);
 
-        String mesage = "\nNOMBRE: Control SimiRobots \n\nVERSIÓN: 1.3.1 \n\nFECHA DE VERSIÓN: 31 de Julio 2024 \n\nCREADOR: Oscar Julián Castillo Mateus";
+        String mesage = "\nNOMBRE: Control SimiRobots \n\nVERSIÓN: 0.2.2 \n\nFECHA DE VERSIÓN: 22 de Noviembre 2024 \n\nCREADOR: Oscar Julián Castillo Mateus";
 
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,13 +141,94 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnVentilador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!compuerta) {
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('W');//ventilador W encender w apagar
+                        //Toast.makeText(getBaseContext(), "prendiendo ventilador...", Toast.LENGTH_SHORT).show();
+                        compuerta = true;
+                        btnVentilador.setImageResource(R.drawable.ventilador_prendido);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }else{
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('w');
+                        //Toast.makeText(getBaseContext(), "apagando ventilador...", Toast.LENGTH_SHORT).show();
+                        compuerta = false;
+                        btnVentilador.setImageResource(R.drawable.ventilador_apagodo);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }
+            }
+        });
+
+        btnDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!compuerta) {
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('U');
+                        //Toast.makeText(getBaseContext(), "Abriendo compueta...", Toast.LENGTH_SHORT).show();
+                        compuerta = true;
+                        btnDoor.setImageResource(R.drawable.door_open_70);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }else{
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('u');
+                        //Toast.makeText(getBaseContext(), "Cerrando compuerta...", Toast.LENGTH_SHORT).show();
+                        compuerta = false;
+                        btnDoor.setImageResource(R.drawable.door_close_70);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }
+            }
+        });
+
+        btnRampa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!rampa) {
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('3');
+                        //Toast.makeText(getBaseContext(), "bajando rampa...", Toast.LENGTH_SHORT).show();
+                        rampa = true;
+                        btnRampa.setImageResource(R.drawable.rampa_arriba_24);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }else{
+                    if (MyConexionBT != null) {
+                        MyConexionBT.write('4');
+                        //Toast.makeText(getBaseContext(), "subiendo rmapa...", Toast.LENGTH_SHORT).show();
+                        rampa = false;
+                        btnRampa.setImageResource(R.drawable.rampa_abajo_24);
+
+                    } else {
+                        Log.e("MainActivity", "mConnectedThread is null");
+                    }
+                }
+            }
+        });
+
         btnLight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!ligth) {
                     if (MyConexionBT != null) {
                         MyConexionBT.write('X');
-                        Toast.makeText(getBaseContext(), "Luces encendidas...", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getBaseContext(), "Luces encendidas...", Toast.LENGTH_SHORT).show();
                         ligth = true;
                         btnLight.setImageResource(R.drawable.icon_flashlight_off_24);
 
@@ -155,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     if (MyConexionBT != null) {
                         MyConexionBT.write('Y');
-                        Toast.makeText(getBaseContext(), "Luces apagadas...", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getBaseContext(), "Luces apagadas...", Toast.LENGTH_SHORT).show();
                         ligth = false;
                         btnLight.setImageResource(R.drawable.icon_flashlight_on_24);
 
@@ -171,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!sound) {
                     if (MyConexionBT != null) {
                         MyConexionBT.write('W');
-                        Toast.makeText(getBaseContext(), "sonido encendido...", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getBaseContext(), "sonido encendido...", Toast.LENGTH_SHORT).show();
                         sound = true;
                         btnSound.setImageResource(R.drawable.icon_music_off_24);
 
@@ -181,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     if (MyConexionBT != null) {
                         MyConexionBT.write('Z');
-                        Toast.makeText(getBaseContext(), "sonido apagado...", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getBaseContext(), "sonido apagado...", Toast.LENGTH_SHORT).show();
                         sound = false;
                         btnSound.setImageResource(R.drawable.icon_music_note_24);
 
